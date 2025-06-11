@@ -3,15 +3,14 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #000;
-  color: white;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Playfair Display', serif;
   overflow-x: hidden;
 }
 
 .container {
   position: relative;
   width: 100vw;
-  height: 8000px; /* 긴 스크롤로 터널 체험 */
+  height: 8000px; /* 긴 스크롤 */
 }
 
 .tunnel {
@@ -29,7 +28,7 @@ html, body {
 
 .circle {
   position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.06);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -37,19 +36,19 @@ html, body {
 }
 
 .step {
+  display: none;
   position: absolute;
-  color: red; /* 눈에 확 띄게 */
-  font-size: 2rem; /* 키움 */
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.1); /* 배경 넣음 */
-  border: 1px solid white;
-  padding: 10px 20px;
-  transform: translate(-50%, -50%) scale(1); /* 기본 크기로 */
-  opacity: 1; /* 항상 보이게 (디버깅용) */
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  max-width: 80%;
+  line-height: 1.6;
 }
 
-
 .step.visible {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.2);
+  display: block;
 }
