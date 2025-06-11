@@ -3,7 +3,8 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #000;
-  font-family: 'Playfair Display', serif;
+  color: white;
+  font-family: sans-serif;
   overflow-x: hidden;
 }
 
@@ -23,35 +24,28 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  pointer-events: none;
 }
 
 .circle {
   position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
 }
 
 .step {
-  display: none;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 500;
-  text-align: center;
-  max-width: 80%;
-  line-height: 1.5;
-  background: none;
-  border: none;
-  padding: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .step.visible {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
 }
