@@ -38,15 +38,16 @@ html, body {
 
 .step {
   position: absolute;
-  color: white;
-  font-size: 1.2rem;
+  color: red; /* 눈에 확 띄게 */
+  font-size: 2rem; /* 키움 */
   font-weight: bold;
-  text-align: center;
-  transform: translate(-50%, -50%) scale(0.5);
-  opacity: 0;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.1); /* 배경 넣음 */
+  border: 1px solid white;
+  padding: 10px 20px;
+  transform: translate(-50%, -50%) scale(1); /* 기본 크기로 */
+  opacity: 1; /* 항상 보이게 (디버깅용) */
 }
+
 
 .step.visible {
   opacity: 1;
