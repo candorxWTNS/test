@@ -10,7 +10,7 @@ html, body {
 .container {
   position: relative;
   width: 100vw;
-  height: 8000px; /* 긴 스크롤 */
+  height: 8000px;
 }
 
 .tunnel {
@@ -38,15 +38,18 @@ html, body {
 .step {
   display: none;
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   font-size: 1.6rem;
   font-weight: 500;
   text-align: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
   max-width: 80%;
-  line-height: 1.6;
+  line-height: 1.5;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .step.visible {
