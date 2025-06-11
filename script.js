@@ -24,25 +24,20 @@ stepLabels.forEach((label, index) => {
   const step = document.createElement('div');
   step.className = 'step';
   step.innerText = label;
-  step.dataset.index = index;
   tunnel.appendChild(step);
 });
 
-// 스크롤에 따라 텍스트 표시
+// 스크롤에 따라 하나씩 표시
 window.addEventListener('scroll', () => {
-  const scrollRatio = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  const stepIndex = Math.floor(scrollRatio * stepLabels.length);
-  
+  const stepCount = stepLabels.length;
+  const sectionHeight = document.body.scrollHeight / stepCount;
+  const stepIndex = Math.floor(window.scrollY / sectionHeight);
+
   document.querySelectorAll('.step').forEach((step, index) => {
     if (index === stepIndex) {
       step.classList.add('visible');
     } else {
       step.classList.remove('visible');
     }
-
-    // 위치 중앙으로 고정
-    const tunnelRect = tunnel.getBoundingClientRect();
-    step.style.left = `${tunnelRect.width / 2}px`;
-    step.style.top = `${tunnelRect.height / 2}px`;
   });
 });
