@@ -1,15 +1,5 @@
 const tunnel = document.getElementById('tunnel');
 const circles = 60;
-
-for (let i = 0; i < circles; i++) {
-  const c = document.createElement('div');
-  c.classList.add('circle');
-  c.style.width = `${20 + i * 20}px`;
-  c.style.height = `${20 + i * 20}px`;
-  c.style.opacity = `${1 - i / circles}`;
-  tunnel.appendChild(c);
-}
-
 const stepLabels = [
   "Step 1: Soap 제품 (세안용)",
   "Step 2: Serum 1 또는 Serum 1 Plus",
@@ -18,22 +8,41 @@ const stepLabels = [
   "Step 5: Cleaning Milk → 이후 다시 Soap"
 ];
 
+// 원형 터널 생성
+for (let i = 0; i < circles; i++) {
+  const c = document.createElement('div');
+  c.classList.add('circle');
+  const size = 30 + i * 20;
+  c.style.width = `${size}px`;
+  c.style.height = `${size}px`;
+  c.style.opacity = `${1 - i / circles}`;
+  tunnel.appendChild(c);
+}
+
+// 단계 텍스트 생성
 stepLabels.forEach((label, index) => {
-  const text = document.createElement('div');
-  text.className = 'step';
-  text.innerText = label;
-  const angle = index * Math.PI / (stepLabels.length - 1);
-  const radius = 150 + index * 80;
-  text.style.left = `calc(50% + ${Math.cos(angle) * radius}px)`;
-  text.style.top = `calc(50% + ${Math.sin(angle) * radius}px)`;
-  tunnel.appendChild(text);
+  const step = document.createElement('div');
+  step.className = 'step';
+  step.innerText = label;
+  step.dataset.index = index;
+  tunnel.appendChild(step);
 });
 
+// 스크롤에 따라 텍스트 표시
 window.addEventListener('scroll', () => {
+  const scrollRatio = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const stepIndex = Math.floor(scrollRatio * stepLabels.length);
+  
   document.querySelectorAll('.step').forEach((step, index) => {
-    const triggerPoint = window.scrollY / document.body.scrollHeight * stepLabels.length;
-    if (index < triggerPoint + 1) {
+    if (index === stepIndex) {
       step.classList.add('visible');
+    } else {
+      step.classList.remove('visible');
     }
+
+    // 위치 중앙으로 고정
+    const tunnelRect = tunnel.getBoundingClientRect();
+    step.style.left = `${tunnelRect.width / 2}px`;
+    step.style.top = `${tunnelRect.height / 2}px`;
   });
 });
