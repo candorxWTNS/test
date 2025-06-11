@@ -1,0 +1,54 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000;
+  color: white;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 8000px; /* 긴 스크롤 */
+}
+
+.tunnel {
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vmin;
+  height: 100vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: scaleCircle 0.1s linear forwards;
+}
+
+@keyframes scaleCircle {
+  to {
+    transform: scale(1.02);
+  }
+}
+
+.step {
+  position: absolute;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+.step.visible {
+  opacity: 1;
+  transform: scale(1.1);
+}
