@@ -1,0 +1,11 @@
+{
+  "name": "playlist-migrator",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Spotify / Apple Music / YouTube Music 플레이리스트 이전 서비스 - 설계 문서와 매칭 엔진 프로토타입",
+  "main": "src/matcher.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "license": "UNLICENSED"
+}
